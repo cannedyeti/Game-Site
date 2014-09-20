@@ -1,0 +1,85 @@
+body {
+color: white;
+background-color: black;
+
+}
+
+h1 {
+	color: white;
+	font-family: Impact;
+	font-size: 80px;
+	text-align: center;
+}
+
+#heroName {
+
+font-family: Agency FB;
+
+}
+
+#enemyName{
+
+font-family: Agency FB;
+}
+
+#main {
+	margin-left: 375px;
+	margin-right:375px;
+	margin-top: 100px;
+	position: relative;
+
+}
+
+#image {
+
+	position: absolute;
+}
+
+
+#hero
+{
+    z-index:100;
+    position:absolute;    
+    left:150px;
+    top:350px;
+    height:200px;
+    width:200px;
+    background-color: blue;
+}
+
+#villian
+{
+    z-index:100;
+    position:absolute;    
+    right:150px;
+    top:350px;
+    height:200px;
+    width:200px;
+    background-color: red;
+}
+
+ul {
+	list-style-type: none; 
+	text-align: center;
+}
+
+li {
+	display: inline-block;
+	margin-left: 200;
+	margin-right: 200;
+	padding-left: 300px;
+	padding-right: 300px;
+	font-size: 40px;
+	font-family: Agency FB;
+}
+
+
+#status
+{
+    z-index:100;
+    position:absolute;    
+    margin-left: 550px;
+    top:100px;
+    color: white;
+
+}

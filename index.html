@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>HTML 5/JavaScript Game</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		
+		
+		<h1>Battle Royale!</h1>
+		<ul>
+			<form id ="heroN">
+				<li id="heroName">
+					<input type="text" id="heroText" placeholder="Enter Hero Name"/><input type="submit"/>
+				</li>     
+			</form>
+			<form id="enemyN">
+				<li id="enemyName">
+					<input type="text" id="enemyText" placeholder="Enter Enemy Name"/><input type="submit"/>
+				</li>
+			</form>
+		</ul>
+		<ul>
+			<li id="2"></li>
+			<li id="3"></li>	
+		</ul>
+
+		<div id ="main">
+			<img id="image" src="map.jpg"/>
+			<p id="status">Here goes the battle!</p>
+			<div id="hero">
+			</div>
+
+			<div id="villian">
+			</div>
+
+		</div>
+
+
+
+
+	
+
+		<script src="jquery.js.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$("#heroN").submit( function(){
+					$("#2").replaceWith("<li>" + $("heroText") + "</li>");
+				});
+
+				$("form:second").submit( function(){
+					$("#3").replaceWith("<li>" + $("enemyText") + "</li>");
+				});
+
+			});
+
+
+
+
+			function Character(name, damage, health, critChance, missChance) {
+				this.name = name;
+				this.damage = damage;
+				this.health = health;
+				this.critChance = critChance;
+				this.missChance = missChance;
+				this.hit = function() {
+					return Math.floor(Math.random() * 100) > this.missChance;
+				}
+				this.crit = function() {
+					return Math.floor(Math.random() * 100) <= this.critChance;
+				}
+		
+				this.heal = function() {
+					this.health += 5;
+				}
+				this.deal = function() {
+					if (this.hit()) {
+						this.attack(); 
+					}
+					else {
+						$("#status").replaceWith("<p id=\'status\'>" + $(this).name + "</p>");
+					}
+				}
+		
+		}		
+			//Characters
+			var hero = new Character("Mark", 10, 100, 20, 5);
+			var villian = new Character("Bubba", 15, 100, 5, 10);
+		
+		
+			//Hero attacks
+			hero.attack = function() {
+					if (hero.crit()) {
+						villian.health -= hero.damage * 2;
+						//alert("Critical Strike!")
+					}
+					else {
+						villian.health -= hero.damage;
+					}
+			}
+			//Villian attacks
+			villian.attack = function() {
+				if (villian.crit()) {
+						hero.health -= villian.damage * 2;
+						//alert(hero.name + " has been crit!")
+					}
+					else {
+						hero.health -= villian.damage;
+					}
+			}
+ 		 //villian choice
+			villianAttack = function() {
+				if	(Math.floor(Math.random() * 100) >= 60)
+				{
+					villian.deal();
+				}
+				else{
+					villian.heal();
+					//alert(villian.name + " healed!");
+				}	
+			}
+		
+			//Hero's choice
+			choose = function() {
+				var choice = prompt(hero.name + "\'s health is " + hero.health +". " + "Your enemy " + villian.name + "\'s health is at " + villian.health + ". " + " Would you like to attack or heal?");
+				if (choice == "attack"){
+					hero.deal();
+				}
+				else {
+					hero.heal();
+				}
+			}
+		
+		
+			//running code
+			//hero.name = prompt("What is your name?");
+			//villian.name = prompt("Who is your worst enemy?")
+		
+			while (hero.health > 0 && villian.health > 0) {
+				choose();
+				villianAttack();
+			}
+		
+ 		 if (hero.health <= 0) {
+				alert("You lose!");
+			}
+		
+			if (villian.health <= 0) {
+				alert("You win!");
+			}
+		
+		
+		
+		
+		
+		</script>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	</body>
+</html>
