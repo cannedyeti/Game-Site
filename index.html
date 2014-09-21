@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		
 		<h1>Battle Royale!</h1>
 		<ul>
@@ -43,16 +43,15 @@
 
 
 	
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		
 		<script>
 			$(document).ready(function() {
 
-				$("#heroN").submit( function(){
+				$("#heroN").on("submit", function(){
 					$("#2").replaceWith("<li>" + $("heroText") + "</li>");
 				});
 
-				$("form:second").submit( function(){
+				$("enemyN").on("submit", function(){
 					$("#3").replaceWith("<li>" + $("enemyText") + "</li>");
 				});
 
