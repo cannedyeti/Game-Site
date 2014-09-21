@@ -83,3 +83,8 @@ li {
     color: white;
 
 }
+
+#attack{
+position: fixed;
+clear:both;
+}

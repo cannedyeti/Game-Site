@@ -2,23 +2,23 @@
 <html lang="en">
 	<head>
 		<title>HTML 5/JavaScript Game</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
 		
 		
 		<h1>Battle Royale!</h1>
 		<ul>
-			<form id ="heroN">
-				<li id="heroName">
+			<li id="heroName">
+				<form id ="heroN" action="">
 					<input type="text" id="heroText" placeholder="Enter Hero Name"/><input type="submit"/>
-				</li>     
-			</form>
-			<form id="enemyN">
-				<li id="enemyName">
+				</form>
+			</li>     
+			<li id="enemyName">
+				<form id="enemyN" action="">
 					<input type="text" id="enemyText" placeholder="Enter Enemy Name"/><input type="submit"/>
-				</li>
-			</form>
+				</form>
+			</li>
 		</ul>
 		<ul>
 			<li id="2"></li>
@@ -35,13 +35,16 @@
 			</div>
 
 		</div>
-
-
+		<div id="attack">
+			<form id="choice">
+				<input type="text" id="turn" placeholder="Would you like to attack or heal?"/><input type="submit" />
+			</form>
+		</div>
 
 
 	
 
-		<script src="jquery.js.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
 
@@ -132,6 +135,11 @@
 				}
 			}
 		
+
+			$("#hero").height(hero.health * 2);
+			$("#villian").height(villian.health * 2);
+			$("#hero").width(hero.health * 2);
+			$("#villian").width(villian.health * 2);
 		
 			//running code
 			//hero.name = prompt("What is your name?");
