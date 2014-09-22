@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
 		
 		<h1>Battle Royale!</h1>
 		<ul>
@@ -35,27 +35,22 @@
 			</div>
 
 		</div>
-		<div id="attack">
-			<form id="choice">
-				<input type="text" id="turn" placeholder="Would you like to attack or heal?"/><input type="submit" />
+
+		<br/><br/>
+		
+		<div id="choose">
+			<form id="attackB" action="">
+				<input type="submit" value="Attack" />
+			</form>
+			<form id="healB" action="">
+				<input type="submit" value="Heal" />
 			</form>
 		</div>
-
+ 
 
 	
 		
 		<script>
-			$(document).ready(function() {
-
-				$("#heroN").on("submit", function(){
-					$("#2").replaceWith("<li>" + $("heroText") + "</li>");
-				});
-
-				$("enemyN").on("submit", function(){
-					$("#3").replaceWith("<li>" + $("enemyText") + "</li>");
-				});
-
-			});
 
 
 
@@ -80,11 +75,7 @@
 					if (this.hit()) {
 						this.attack(); 
 					}
-					else {
-						$("#status").replaceWith("<p id=\'status\'>" + $(this).name + "</p>");
-					}
-				}
-		
+				}		
 		}		
 			//Characters
 			var hero = new Character("Mark", 10, 100, 20, 5);
@@ -95,17 +86,17 @@
 			hero.attack = function() {
 					if (hero.crit()) {
 						villian.health -= hero.damage * 2;
-						//alert("Critical Strike!")
+						villianAttack;
 					}
 					else {
 						villian.health -= hero.damage;
+						villianAttack;
 					}
 			}
 			//Villian attacks
 			villian.attack = function() {
 				if (villian.crit()) {
 						hero.health -= villian.damage * 2;
-						//alert(hero.name + " has been crit!")
 					}
 					else {
 						hero.health -= villian.damage;
@@ -119,42 +110,50 @@
 				}
 				else{
 					villian.heal();
-					//alert(villian.name + " healed!");
 				}	
 			}
 		
-			//Hero's choice
-			choose = function() {
-				var choice = prompt(hero.name + "\'s health is " + hero.health +". " + "Your enemy " + villian.name + "\'s health is at " + villian.health + ". " + " Would you like to attack or heal?");
-				if (choice == "attack"){
-					hero.deal();
-				}
-				else {
-					hero.heal();
-				}
-			}
 		
 
 			$("#hero").height(hero.health * 2);
 			$("#villian").height(villian.health * 2);
 			$("#hero").width(hero.health * 2);
 			$("#villian").width(villian.health * 2);
+			$("#status").text("Hero " + hero.name + "'s health is at " + hero.health + ". Enemy " + villian.name + "'s is " + villian.health);
 		
-			//running code
-			//hero.name = prompt("What is your name?");
-			//villian.name = prompt("Who is your worst enemy?")
+			
+			$(document).ready(function() {
+
+				$("#heroN").on("submit", function(e){
+					e.preventDefault();
+					$("#heroName").replaceWith("<li>" + $("#heroText") + "</li>");
+				});
+
+				$("#enemyN").on("submit", function(e){
+					e.preventDefault();
+					$("#enemyName").replaceWith("<li>" + $("#enemyText") + "</li>");
+				});
+
+				$("#attackB").on("submit", function(e){
+					e.preventDefault();
+					hero.deal();
+					});
+				$("#healB").on("submit", function(e){
+					e.preventDefault();
+					hero.heal();
+					});
+
+			});
+
+
+
 		
-			while (hero.health > 0 && villian.health > 0) {
-				choose();
-				villianAttack();
-			}
-		
- 		 if (hero.health <= 0) {
-				alert("You lose!");
+ 		 	if (hero.health <= 0) {
+				$("#status").text("You lose!");
 			}
 		
 			if (villian.health <= 0) {
-				alert("You win!");
+				$("#status").text("You win!");
 			}
 		
 		
