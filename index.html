@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
 		
 		<h1>Battle Royale!</h1>
 		<ul>
@@ -27,7 +28,7 @@
 
 		<div id ="main">
 			<img id="image" src="map.jpg"/>
-			<p id="status">Here goes the battle!</p>
+			<p id="status"></p>
 			<div id="hero">
 			</div>
 
@@ -39,138 +40,15 @@
 		<br/><br/>
 		
 		<div id="choose">
-			<form id="attackB" action="">
-				<input type="submit" value="Attack" />
-			</form>
-			<form id="healB" action="">
-				<input type="submit" value="Heal" />
-			</form>
+			<button id="attackB">Attack!
+			</button>
+			<button id="healB">Heal!
+			</button>
 		</div>
  
 
 	
-		
-		<script>
-
-
-
-
-			function Character(name, damage, health, critChance, missChance) {
-				this.name = name;
-				this.damage = damage;
-				this.health = health;
-				this.critChance = critChance;
-				this.missChance = missChance;
-				this.hit = function() {
-					return Math.floor(Math.random() * 100) > this.missChance;
-				}
-				this.crit = function() {
-					return Math.floor(Math.random() * 100) <= this.critChance;
-				}
-		
-				this.heal = function() {
-					this.health += 5;
-				}
-				this.deal = function() {
-					if (this.hit()) {
-						this.attack(); 
-					}
-				}		
-		}		
-			//Characters
-			var hero = new Character("Mark", 10, 100, 20, 5);
-			var villian = new Character("Bubba", 15, 100, 5, 10);
-		
-		
-			//Hero attacks
-			hero.attack = function() {
-					if (hero.crit()) {
-						villian.health -= hero.damage * 2;
-						villianAttack;
-					}
-					else {
-						villian.health -= hero.damage;
-						villianAttack;
-					}
-			}
-			//Villian attacks
-			villian.attack = function() {
-				if (villian.crit()) {
-						hero.health -= villian.damage * 2;
-					}
-					else {
-						hero.health -= villian.damage;
-					}
-			}
- 		 //villian choice
-			villianAttack = function() {
-				if	(Math.floor(Math.random() * 100) >= 60)
-				{
-					villian.deal();
-				}
-				else{
-					villian.heal();
-				}	
-			}
-		
-		
-
-			$("#hero").height(hero.health * 2);
-			$("#villian").height(villian.health * 2);
-			$("#hero").width(hero.health * 2);
-			$("#villian").width(villian.health * 2);
-			$("#status").text("Hero " + hero.name + "'s health is at " + hero.health + ". Enemy " + villian.name + "'s is " + villian.health);
-		
-			
-			$(document).ready(function() {
-
-				$("#heroN").on("submit", function(e){
-					e.preventDefault();
-					$("#heroName").replaceWith("<li>" + $("#heroText") + "</li>");
-				});
-
-				$("#enemyN").on("submit", function(e){
-					e.preventDefault();
-					$("#enemyName").replaceWith("<li>" + $("#enemyText") + "</li>");
-				});
-
-				$("#attackB").on("submit", function(e){
-					e.preventDefault();
-					hero.deal();
-					});
-				$("#healB").on("submit", function(e){
-					e.preventDefault();
-					hero.heal();
-					});
-
-			});
-
-
-
-		
- 		 	if (hero.health <= 0) {
-				$("#status").text("You lose!");
-			}
-		
-			if (villian.health <= 0) {
-				$("#status").text("You win!");
-			}
-		
-		
-		
-		
-		
-		</script>
-		
-
-
-
-
-
-
-
-
-
+	
 
 
 
