@@ -22,8 +22,8 @@
 				}		
 		}		
 			//Characters
-			var hName = $("#heroName").val();
-			var eName = $("#enemyName").val();
+			var hName = $("input[name=heroText]").val();
+			var eName = $("input[name=enemyText]").val();
 			var villian = new Character(eName, 15, 100, 5, 10);
 			var hero = new Character(hName, 10, 100, 20, 5);
 		
@@ -64,20 +64,25 @@
 			$("#villian").height(villian.health * 2);
 			$("#hero").width(hero.health * 2);
 			$("#villian").width(villian.health * 2);
-			$("#status").text("<p id='status'>Hero " + hero.name + "'s health is at " + hero.health + ". Enemy " + villian.name + "'s is " + villian.health + "</p>");
+			$("p#status").text("<p id='status'>Hero " + hName + "'s health is at " + hero.health + ". Enemy " + eName + "'s is " + villian.health + "</p>");
 		
 			
 			$(document).ready(function() {
 
-				$("#heroN").on("submit", function(e){
-					e.preventDefault();
+				$("#h1").click(function() {
+					var hName = $("input[name=heroText]").val();
 					$("#heroName").replaceWith("<li>" + hName + "</li>");
 				});
 
-				$("#enemyN").on("submit", function(e){
-					e.preventDefault();
+				$("#e1").click(function() {
+					var eName = $("input[name=enemyText]").val();
 					$("#enemyName").replaceWith("<li>" + eName + "</li>");
 				});
+
+			
+			});
+
+
 
 				$("#attackB").click(function(){
 					hero.deal();
@@ -86,18 +91,14 @@
 					hero.heal();
 					});
 
-			});
-
-
-
 		
- 		 	if (hero.health <= 0) {
-				$("#status").text("You lose!");
-			}
+ 		 	//if (hero.health <= 0) {
+			//	$("#status").text("You lose!");
+			//}
 		
-			if (villian.health <= 0) {
-				$("#status").text("You win!");
-			}
+			//if (villian.health <= 0) {
+			//	$("#status").text("You win!");
+			//}
 		
 		
 		
