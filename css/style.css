@@ -7,7 +7,6 @@ background-color: black;
 h1 {
 	color: white;
 	font-family: Impact;
-	font-size: 80px;
 	text-align: center;
 }
 
@@ -36,7 +35,7 @@ font-family: Agency FB;
 }
 
 
-#hero
+#heroBl
 {
     z-index:100;
     position:absolute;    
@@ -47,7 +46,7 @@ font-family: Agency FB;
     background-color: blue;
 }
 
-#villian
+#villianBl
 {
     z-index:100;
     position:absolute;    
@@ -84,7 +83,6 @@ li {
 
 }
 
-#attack{
-position: fixed;
-clear:both;
+#choose {
+	float: bottom;
 }

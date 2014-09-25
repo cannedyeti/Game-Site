@@ -94,26 +94,30 @@ $(document).ready(function() {
 			if (villian.health <= 0) {
 				$("p#status").replaceWith("You win!");
 			}
+			$("#heroBl").height(hero.health * 2);
+			$("#villianBl").height(villian.health * 2);
+			$("#heroBl").width(hero.health * 2);
+			$("#villianBl").width(villian.health * 2);
 		});
 
 		$("#healB").click(function(){
 			hero.heal();
 			villianAttack();
 			$("p#status").replaceWith("<p id='status'>Hero " + hName + "'s health is at " + hero.health + ". Enemy " + eName + "'s is " + villian.health + "</p>");
-			if (hero.health <= 0) {
-				$("#status").replaceWith("You lose!");
-			}
-		
-			if (villian.health <= 0) {
-				$("p#status").replaceWith("You win!");
-			}
+			$("#heroBl").height(hero.health * 2);
+			$("#villianBl").height(villian.health * 2);
+			$("#heroBl").width(hero.health * 2);
+			$("#villianBl").width(villian.health * 2);
 		});
 
+		//	if (hero.health <= 0) {
+		//		alert("You lose! Refresh to play again!")
+		//	}
+		//
+		//	if (villian.health <= 0) {
+		//		alert("You win! Refresh to play again!")
+		//	}
 		
-		$("#heroBl").height(hero.health * 2);
-		$("#villianBl").height(villian.health * 2);
-		$("#heroBl").width(hero.health * 2);
-		$("#villianBl").width(villian.health * 2);
 		
 		});
 		
