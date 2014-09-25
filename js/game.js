@@ -22,12 +22,11 @@
 			}
 		}		
 	}		
+			var eName = "";
+			var hName = "";
+			var hero = new Character(hName, 10, 100, 20, 5);
+			var villian = new Character(eName, 15, 100, 5, 10);
 
-	var hName = "Bill";
-	var eName = "Tom";
-	var villian = new Character(eName, 15, 100, 5, 10);
-	var hero = new Character(hName, 10, 100, 20, 5);
-		
 	//Hero attacks
 	hero.attack = function() {
 		if (hero.crit()) {
@@ -39,6 +38,8 @@
 				villianAttack;
 			}
 	}
+	
+		
 	//Villian attacks
 	villian.attack = function() {
 		if (villian.crit()) {
@@ -62,7 +63,6 @@
 $(document).ready(function() {
 		
 		
-			
 		//hero name change
 		$("#h1").click(function() {
 			var hName = $("input[name=heroText]").val();
@@ -74,6 +74,7 @@ $(document).ready(function() {
 			var eName = $("input[name=enemyText]").val();
 			$("#enemyName").replaceWith("<li>" + eName + "</li>");
 		});
+			
 
 		//Status message
 		$("p#status").replaceWith("<p id='status'>Hero " + hName + "'s health is at " + hero.health + ". Enemy " + eName + "'s is " + villian.health + "</p>");
@@ -98,6 +99,13 @@ $(document).ready(function() {
 			$("#villianBl").height(villian.health * 2);
 			$("#heroBl").width(hero.health * 2);
 			$("#villianBl").width(villian.health * 2);
+			if (hero.health <= 0) {
+				alert("<p id='status'>You lose! Refresh to play again!</p>")
+			}
+		
+			if (villian.health <= 0) {
+				alert("<p id='status'>You win! Refresh to play again!</p>")
+			}
 		});
 
 		$("#healB").click(function(){
@@ -108,15 +116,15 @@ $(document).ready(function() {
 			$("#villianBl").height(villian.health * 2);
 			$("#heroBl").width(hero.health * 2);
 			$("#villianBl").width(villian.health * 2);
+			if (hero.health <= 0) {
+				alert("<p id='status'>You lose! Refresh to play again!</p>")
+			}
+		
+			if (villian.health <= 0) {
+				alert("<p id='status'>You win! Refresh to play again!</p>")
+			}
 		});
 
-		//	if (hero.health <= 0) {
-		//		alert("You lose! Refresh to play again!")
-		//	}
-		//
-		//	if (villian.health <= 0) {
-		//		alert("You win! Refresh to play again!")
-		//	}
 		
 		
 		});
