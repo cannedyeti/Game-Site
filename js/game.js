@@ -1,3 +1,4 @@
+			$(document).ready(function() {
 
 			function Character(name, damage, health, critChance, missChance) {
 				this.name = name;
@@ -59,15 +60,8 @@
 			}
 		
 		
-
-			$("#hero").height(hero.health * 2);
-			$("#villian").height(villian.health * 2);
-			$("#hero").width(hero.health * 2);
-			$("#villian").width(villian.health * 2);
-			$("p#status").text("<p id='status'>Hero " + hName + "'s health is at " + hero.health + ". Enemy " + eName + "'s is " + villian.health + "</p>");
 		
 			
-			$(document).ready(function() {
 
 				$("#h1").click(function() {
 					var hName = $("input[name=heroText]").val();
@@ -79,8 +73,12 @@
 					$("#enemyName").replaceWith("<li>" + eName + "</li>");
 				});
 
+			$("p#status").replaceWith("<p id='status'>Hero " + hName + "'s health is at " + hero.health + ". Enemy " + eName + "'s is " + villian.health + "</p>");
+			$("#hero").height(hero.health * 2);
+			$("#villian").height(villian.health * 2);
+			$("#hero").width(hero.health * 2);
+			$("#villian").width(villian.health * 2);
 			
-			});
 
 
 
@@ -92,14 +90,15 @@
 					});
 
 		
- 		 	//if (hero.health <= 0) {
-			//	$("#status").text("You lose!");
-			//}
+ 		 	if (hero.health <= 0) {
+				$("#status").replaceWith("You lose!");
+			}
 		
-			//if (villian.health <= 0) {
-			//	$("#status").text("You win!");
-			//}
+			if (villian.health <= 0) {
+				$("#status").replaceWith("You win!");
+			}
 		
+			});
 		
 		
 		
