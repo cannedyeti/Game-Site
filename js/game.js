@@ -22,8 +22,8 @@
 				}		
 		}		
 			//Characters
-			var hName = $("input[name=heroText]").val();
-			var eName = $("input[name=enemyText]").val();
+			var hName = "Bill";
+			var eName = "Tom";
 			var villian = new Character(eName, 15, 100, 5, 10);
 			var hero = new Character(hName, 10, 100, 20, 5);
 		
